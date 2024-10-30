@@ -52,6 +52,18 @@ a:hover {
   background: #0abf53
 }
 
+.adyen-checkout__fieldset__title {
+  color: orange;
+  text-transform: none;
+  /* Defaults below */
+  /* display: block;
+  font-size: .68em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0 0 12px; */
+}
+
 /* Buttons */
 
 .button {

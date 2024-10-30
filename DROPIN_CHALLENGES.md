@@ -4,13 +4,17 @@ I completed the challenges below on the `src > dropin > dropin.js` file to bette
 - [x] Make the `billingAddress` field required for the card payment method in the drop-in.
 - [x] Make US and Canada the only available option for country.
 - [x] Show the card holder name field and make it required.
-- [x] Customize the pay button:
+- [x] Position the card holder name on the top of the form.
+- [x] Display the card brands under the card number field.
+- [x] Replace the `visa` logo with a picture of a cat.
+- [x] Make the pay button disappear.
+- [x] Make the pay button reappear and customize it:
     - [x] Change the color of the pay button to hex code `#0abf53`.
     - [x] Make the text weight 900.
     - [x] Customize the text in the payment button to say “Ecom is Great” rather than “Pay”.
 - [x] Set up a gift card configuration object:
     - [x] First, setup a `genericgiftcard` with `TestPmmAcquirerAccount` on your merchant account.
-    - [x] Change the icon.
+    - [x] Change the icon to a picture of a cat.
     - [x] Change the presented name of the gift card.
 - [x] Customize the order of the brands in the card payment method of the drop-in:
     - [x] Order the brands as follows: `maestro, discover, amex, mc, visa`.

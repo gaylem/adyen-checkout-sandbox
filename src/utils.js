@@ -13,7 +13,6 @@ const paymentMethodsConfig = {
   reference: Math.random(),
   countryCode: "BE",
   shopperLocale: "en-GB",
-  shopperReference: "alex",
   amount: {
     value: 7834,
     currency: "USD",

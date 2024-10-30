@@ -120,6 +120,7 @@ getClientKey().then((clientKey) => {
       enableStoreDetails: true,
       hasHolderName: true,
       holderNameRequired: true,
+      positionHolderNameOnTop: true, 
       billingAddressRequired: true,
       billingAddressAllowedCountries: ['US', 'CA'],
       styles: styleObject

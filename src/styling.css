@@ -41,6 +41,17 @@ a:hover {
   box-sizing: border-box;
 }
 
+
+/* Modifications */
+.adyen-checkout__label__text {
+  color: pink
+}
+
+.adyen-checkout__button--pay {
+  font-weight: 900;
+  background: #0abf53
+}
+
 /* Buttons */
 
 .button {

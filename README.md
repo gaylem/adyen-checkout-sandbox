@@ -7,9 +7,10 @@
 If you're looking for the libraries/plugins source code, visit the main [**Adyen GitHub page**](https://github.com/adyen). You can also find example integrations in the [**adyen-examples repo**](https://github.com/adyen-examples/.github/blob/main/profile/README.md).
 
 ## 📜 Documentation
-* [**Adyen Technical Documentation**](https://docs.adyen.com/)
+* 📝 [**Adyen Technical Documentation**](https://docs.adyen.com/)
 * [**Adyen API Explorer**](https://docs.adyen.com/api-explorer/)
 * [**Adyen Test Cards**](https://docs.adyen.com/development-resources/test-cards/test-card-numbers/)
+* 📺 [**Adyen Developer YouTube Playlist**](https://www.youtube.com/watch?v=VPpTgsJbIhc&list=PL6agz7H5yEoaS-bF2gIwRwe_ApzqmW_QX)
 
 ## 👩‍💻 Challenges
 

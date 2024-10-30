@@ -17,7 +17,7 @@ If you're looking for the libraries/plugins source code, visit the main [**Adyen
 If you'd like to create a sandbox like mine, here's how you can get started:
 
 1. [**Fork and clone**](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the [**AdyenCheckoutJS**](https://github.com/adyen-examples/AdyenCheckoutsJS) repo. 
-2. Create a free [**Adyen test account**](https://docs.adyen.com/get-started-with-adyen/) and set up your Merchant Account, API Key, and Client Key.
+2. Create a free [**Adyen test account**](https://docs.adyen.com/get-started-with-adyen/) and set up your Merchant Account, API Key, and Client Key. Checkout out this [**YouTube video**](https://www.youtube.com/watch?v=AcYl5X_xEyE&t=146s) for a walk-through.
 3. Create a .env file in your repo and add the following variables:
 ```
 MERCHANT_ACCOUNT=YOUR_TEST_MERCHANT_ACCOUNT

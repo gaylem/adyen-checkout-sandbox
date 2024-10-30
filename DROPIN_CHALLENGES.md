@@ -5,7 +5,7 @@ I completed the challenges below on `the src > dropin > dropin.js` file to bette
 - [x] Make US and Canada the only available option for country.
 - [x] Show the card holder name field and make it required.
 - [x] Customize the pay button:
-    - [x]Change the color of the pay button to hex code #0abf53.
+    - [x] Change the color of the pay button to hex code #0abf53.
     - [x] Make the text weight 900.
     - [x] Customize the text in the payment button to say “Ecom is Great” rather than “Pay”.
 - [x] Set up a gift card configuration object:

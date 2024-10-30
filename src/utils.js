@@ -9,7 +9,7 @@ function setReturnUrl() {
 // Add shopperReference for stored cards 
 // https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#stored-card-payments  
 const paymentMethodsConfig = {
-  shopperReference: "Test_10",
+  shopperReference: "Test_11", // required for storing card details
   reference: Math.random(),
   countryCode: "BE",
   shopperLocale: "en-GB",
@@ -20,8 +20,8 @@ const paymentMethodsConfig = {
 };
 
 const paymentsDefaultConfig = {
-  shopperReference: "Test_10",
-  reference: "Test_10",
+  shopperReference: "Test_11", // required for storing card details
+  reference: "Test_11",
   recurringProcessingModel: "CardOnFile",
   countryCode: "NL",
   channel: "Web",

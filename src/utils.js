@@ -6,7 +6,10 @@ function setReturnUrl() {
   }
 }
 
+// Add shopperReference for stored cards 
+// https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#stored-card-payments  
 const paymentMethodsConfig = {
+  shopperReference: "Test_10",
   reference: Math.random(),
   countryCode: "BE",
   shopperLocale: "en-GB",
@@ -18,8 +21,9 @@ const paymentMethodsConfig = {
 };
 
 const paymentsDefaultConfig = {
-  shopperReference: "Checkout Components sample code test",
-  reference: "Checkout Components sample code test",
+  shopperReference: "Test_10",
+  reference: "Test_10",
+  recurringProcessingModel: "CardOnFile",
   countryCode: "NL",
   channel: "Web",
   returnUrl: setReturnUrl(),
@@ -40,6 +44,9 @@ const paymentsDefaultConfig = {
     },
   ],
 };
+
+// Change titles of the components
+
 
 // Generic POST Helper
 const httpPost = (endpoint, data) =>

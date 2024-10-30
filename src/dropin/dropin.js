@@ -19,7 +19,7 @@ getClientKey().then((clientKey) => {
 
     console.log('paymentMethodsResponse', paymentMethodsResponse)
 
-    // Change the component titles with utility function
+    // Change the component titles
     const modifyComponentTitles = () => {
       const paymentMethodsArray = paymentMethodsResponse.paymentMethods
     
@@ -41,18 +41,41 @@ getClientKey().then((clientKey) => {
      * https://docs.adyen.com/online-payments/build-your-integration/sessions-flow/?platform=Web&integration=Components&version=6.3.0#localization 
      * @type {Object}
      */
+    // deliveryAddress, stateOrProvince, moreMethods button not working
     const translations = {
       "en-GB": {
+        "deliveryAddress": "Send me stuff here",
+        "stateOrProvince": "Province",
         "paymentMethods.moreMethodsButton": "More payment methods",
         "payButton": "Ecom is Great",
-        "storeDetails": "Save for my next payment",
+        "storeDetails": "Save my card for later",
+        "name": "boop"
       }
     };
 
+    console.log(translations)
+
     // QUESTION: How do I change Holder Name, Card number, etc?
+    // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style 
+    // QUESTION: Not working, should I use translations?
+        const ariaLabelsObject = {
+          lang: "en-GB",
+          encryptedCardNumber: {
+              label: "I changed this",
+              iframeTitle: "I changed this"
+          },
+          encryptedExpiryDate: {
+              label: "I changed this, too",
+              iframeTitle: "I changed this, too"
+          },
+          encryptedSecurityCode: {
+              label: "Iframe for card data input field"
+          }
+      }
 
         // Define style object for cardConfiguration
-        const styleObject = {
+        // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style 
+        const stylesObject = {
           base: {
             color: 'black',
             fontSize: '16px',
@@ -116,14 +139,17 @@ getClientKey().then((clientKey) => {
         }
       },
       showBrandsUnderCardNumber: true, // v5.12.0 or higher
-      // enableStoreDetails is required for storing card details
-      enableStoreDetails: true,
+      enableStoreDetails: true, // required for storing card details
       hasHolderName: true,
       holderNameRequired: true,
       positionHolderNameOnTop: true, 
       billingAddressRequired: true,
       billingAddressAllowedCountries: ['US', 'CA'],
-      styles: styleObject
+      configuration: {
+        socialSecurityNumberMode: 'show',
+      },
+      styles: stylesObject,
+      ariaLabels: ariaLabelsObject
     }
 
     

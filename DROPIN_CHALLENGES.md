@@ -1,5 +1,7 @@
 ## Advanced Flow
-I completed the challenges below on the `src > dropin > dropin.js` file to better understand how the Adyen web drop-in interacts with the [Advanced Flow](https://docs.adyen.com/online-payments/build-your-integration/advanced-flow/?platform=Web&integration=Drop-in&version=6.3.0) using Adyen's [Checkout API](https://docs.adyen.com/api-explorer/).
+I completed the challenges below on the `src > dropin > dropin.js` file to better understand how the Adyen web drop-in interacts with the [Advanced Flow](https://docs.adyen.com/online-payments/build-your-integration/advanced-flow/?platform=Web&integration=Drop-in&version=6.3.0) using Adyen's [Checkout API](https://docs.adyen.com/api-explorer/). 
+
+Here is a code [walk-through](https://www.youtube.com/watch?v=t1fjcD8UceE&t=1s) to help you get started.
 
 - [x] Make the `billingAddress` field required for the card payment method in the drop-in.
 - [x] Make US and Canada the only available option for country.

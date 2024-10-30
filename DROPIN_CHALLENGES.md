@@ -29,7 +29,7 @@ Here is a code [walk-through](https://www.youtube.com/watch?v=t1fjcD8UceE&t=1s) 
     - [x] Change the presented name of the gift card.
 
 ### Stored Payment Method
-- [x] Store a payment method using the drop-in and the card configuration.
+- [x] Store a card payment method:
     - [x] In another transaction, make the stored payment method appear.
     - [x] Complete another payment with the stored payment method.
     - [x] Find raw request in logs.

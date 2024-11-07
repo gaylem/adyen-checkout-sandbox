@@ -1,5 +1,5 @@
 ## Advanced Flow
-I completed the challenges below on the `src > dropin > dropin.js` file to better understand how the Adyen web drop-in interacts with the [Advanced Flow](https://docs.adyen.com/online-payments/build-your-integration/advanced-flow/?platform=Web&integration=Drop-in&version=6.3.0) using Adyen's [Checkout API](https://docs.adyen.com/api-explorer/). 
+Complete the challenges below on the `src > dropin > dropin.js` file to better understand how the Adyen web drop-in interacts with the [Advanced Flow](https://docs.adyen.com/online-payments/build-your-integration/advanced-flow/?platform=Web&integration=Drop-in&version=6.3.0) using Adyen's [Checkout API](https://docs.adyen.com/api-explorer/). 
 
 Here is a code [walk-through](https://www.youtube.com/watch?v=t1fjcD8UceE&t=1s) to help you get started.
 
@@ -21,7 +21,6 @@ Here is a code [walk-through](https://www.youtube.com/watch?v=t1fjcD8UceE&t=1s) 
     - [x] Customize the text in the payment button to say “Ecom is Great” rather than “Pay”.
 - [x] Change "BILLING ADDRESS" title styles and text.
 - [ ] Change "Name on card," "Card number," and "Expiry date" to something else.
-- [ ] Change the placeholder name.
 - [ ] Change the placeholders for other fields.
 
 ### Gift Card Component

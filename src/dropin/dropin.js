@@ -35,25 +35,29 @@ getClientKey().then((clientKey) => {
     }
     
     modifyComponentTitles()
+
     
     /**
      * Translations for various UI elements.
      * https://docs.adyen.com/online-payments/build-your-integration/sessions-flow/?platform=Web&integration=Components&version=6.3.0#localization 
+     * // Update placeholder texts using translations for v5: 
+     * // https://github.com/Adyen/adyen-web/blob/main/packages/server/translations/en-US.json
+     * // https://github.com/Adyen/adyen-web/blob/main/packages/server/translations/en-US.json
      * @type {Object}
      */
     // deliveryAddress, stateOrProvince, moreMethods button not working
     const translations = {
       "en-GB": {
-        "deliveryAddress": "Send me stuff here",
-        "stateOrProvince": "Province",
-        "paymentMethods.moreMethodsButton": "More payment methods",
-        "payButton": "Ecom is Great",
-        "storeDetails": "Save my card for later",
-        "name": "boop"
+        "select.stateOrProvince": "Choose State or Province", // Changed from default
+        "payButton": "Ecom is Great", // Change from default
+        "storeDetails": "Save my card for later", // Changed from default
+        "creditCard.holderName": "What's your name?", // Changed from default
+        "billingAddress": "What's your billing address?",
+        "creditCard.holderName": "Name on your credit card", // Changed from default
+        // "creditCard.cardNumber.label": "test", // This doesn't work
       }
     };
 
-    console.log(translations)
 
     // QUESTION: How do I change Holder Name, Card number, etc?
     // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style 
@@ -220,7 +224,9 @@ getClientKey().then((clientKey) => {
       removePaymentMethods: ["paysafecard", "c_cash"],
       translations: translations,
       locale: "en-GB",
-      // Put paypal, klarna, etc here
+      // Update placeholder texts v6: https://docs.adyen.com/online-payments/upgrade-your-integration/migrate-to-web-v6/#update-placeholder-texts 
+      // Update placeholder texts using translations for v5
+      // Put paypal, klarna, configs etc here:
       paymentMethodsConfiguration: {
         card: cardConfiguration,
         giftcard: giftcardConfiguration,
@@ -295,8 +301,10 @@ getClientKey().then((clientKey) => {
        * @throws {Error} Throws an error if the payment is unsuccessful or if actions.reject() is called.
        */
       onAdditionalDetails: (state, dropin) => {
+        console.log("onAdditionalDetails state: ", state)
         submitDetails(state.data)
           .then((response) => {
+            console.log("onAdditionalDetails response: ", response)
             if (response.action) {
               dropin.handleAction(response.action);
             } else if (response.resultCode === "Authorised") {
@@ -426,7 +434,10 @@ async function handleRedirectResult(redirectResult) { // added async
     })
     .mount("#dropin-container");
 
+console.log("redirectResult: ", redirectResult)
+
   submitDetails({ details: { redirectResult } }).then((response) => {
+    console.log("submitDetails response: ", response)
     if (response.resultCode === "Authorised") {
       document.getElementById("result-container").innerHTML =
         '<img alt="Success" src="https://checkoutshopper-test.adyen.com/checkoutshopper/images/components/success.svg">';
@@ -460,5 +471,3 @@ const { redirectResult } = getSearchParameters(window.location.search);
 if (redirectResult) {
   handleRedirectResult(redirectResult);
 }
-
-

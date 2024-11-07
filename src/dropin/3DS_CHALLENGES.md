@@ -1,7 +1,7 @@
 ## Advanced Flow
 Complete the challenges below on the `src > dropin > dropin.js` file to better understand how 3D Secure with the [Advanced Flow](https://docs.adyen.com/online-payments/build-your-integration/advanced-flow/?platform=Web&integration=Drop-in&version=6.3.0) using Adyen's [Checkout API](https://docs.adyen.com/api-explorer/). 
 
-Make sure you complete the challenges in DROPIN_CHALLENGES.md before you do these.
+Make sure you complete the challenges in [DROPIN_CHALLENGES.md](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/dropin/DROPIN_CHALLENGES.md) before you do these.
 
 Here are some videos to help you get started: 
 - [The /payments/details call](https://www.youtube.com/watch?v=qZcpgN37mxI&t=2s)

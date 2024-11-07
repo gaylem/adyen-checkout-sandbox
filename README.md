@@ -25,7 +25,7 @@ CHECKOUT_APIKEY=YOUR_API_KEY
 CLIENT_KEY=YOUR_CLIENT_KEY
 ```
 4. If you're using PHP, spin up your server with `./start.sh`. If you're using NodeJS, you'll need to `npm install`. 
-4. Open the [**DROPIN_CHALLENGES.md**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/DROPIN_CHALLENGES.md) file and work through the challenges listed there. 
+4. Open the [**DROPIN_CHALLENGES.md**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/dropin/DROPIN_CHALLENGES.md) file and work through the challenges listed there. 
 5. Only reference the solutions in my repo if you get really stuck or want to check your work! 
 6. Review the Adyen docs and create your own challenges to better understand payment processing. 
 7. More challenges to come!

@@ -145,11 +145,12 @@ getClientKey().then((clientKey) => {
       positionHolderNameOnTop: true, 
       billingAddressRequired: true,
       billingAddressAllowedCountries: ['US', 'CA'],
-      configuration: {
-        socialSecurityNumberMode: 'show',
-      },
+      // configuration: {
+      //   socialSecurityNumberMode: 'show', // Shows SSN field
+      // },
       styles: stylesObject,
-      ariaLabels: ariaLabelsObject
+      ariaLabels: ariaLabelsObject,
+      name: "CREDIT CARD COMPONENT" // Updates the name/title of the component
     }
 
     
@@ -413,8 +414,8 @@ getClientKey().then((clientKey) => {
  * Handles the redirect result after payment processing.
  * @param {string} redirectResult - The redirect result received after payment.
  */
-function handleRedirectResult(redirectResult) {
-  const checkout = new AdyenCheckout({
+async function handleRedirectResult(redirectResult) { // added async
+  const checkout = await AdyenCheckout({ // changed new to await
     environment: "test",
     clientKey: "test_M35ZRWIW6JHMPOLIAJELF2OYEYIKZQEP",
     locale: "en-GB",
@@ -459,3 +460,5 @@ const { redirectResult } = getSearchParameters(window.location.search);
 if (redirectResult) {
   handleRedirectResult(redirectResult);
 }
+
+

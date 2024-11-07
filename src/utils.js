@@ -1,8 +1,19 @@
+// Original setReturnUrl function
+// function setReturnUrl() {
+//   if (window.location.pathname === "/sessions/" || "/dropin/") {
+//     return window.location.href;
+//   } else {
+//     return "https://your-company.com/";
+//   }
+// }
+
+// Update to redirect 3DS to adyen
 function setReturnUrl() {
   if (window.location.pathname === "/sessions/" || "/dropin/") {
-    return window.location.href;
+    // return window.location.href;
+    return "https://www.adyen.com/";
   } else {
-    return "https://your-company.com/";
+    return "https://www.adyen.com/";
   }
 }
 
@@ -42,9 +53,9 @@ const paymentsDefaultConfig = {
       taxCategory: "High",
     },
   ],
-  additionalData: {
-    allow3DS2: true
-  }
+  // additionalData: {
+  //   allow3DS2: true // Enables 3DS Native Flow
+  // }
 };
 
 // Change titles of the components

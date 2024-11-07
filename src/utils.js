@@ -42,6 +42,9 @@ const paymentsDefaultConfig = {
       taxCategory: "High",
     },
   ],
+  additionalData: {
+    allow3DS2: true
+  }
 };
 
 // Change titles of the components

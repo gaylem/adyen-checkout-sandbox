@@ -72,9 +72,7 @@ getClientKey().then((clientKey) => {
     };
 
 
-    // QUESTION: How do I change Holder Name, Card number, etc?
     // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style 
-    // QUESTION: Not working, should I use translations?
         const ariaLabelsObject = {
           lang: "en-GB",
           encryptedCardNumber: {

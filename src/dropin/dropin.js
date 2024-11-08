@@ -19,7 +19,8 @@ getClientKey().then((clientKey) => {
 
     console.log('paymentMethodsResponse', paymentMethodsResponse)
 
-    // Change the component titles
+    // You can change the component titles using a loop
+    // You can also change them with the "name" property on the component configuration objects (ex: cardConfiguration, giftcardConfiguration, etc.)
     const modifyComponentTitles = () => {
       const paymentMethodsArray = paymentMethodsResponse.paymentMethods
     
@@ -39,22 +40,34 @@ getClientKey().then((clientKey) => {
     
     /**
      * Translations for various UI elements.
-     * https://docs.adyen.com/online-payments/build-your-integration/sessions-flow/?platform=Web&integration=Components&version=6.3.0#localization 
-     * // Update placeholder texts using translations for v5: 
-     * // https://github.com/Adyen/adyen-web/blob/main/packages/server/translations/en-US.json
-     * // https://github.com/Adyen/adyen-web/blob/main/packages/server/translations/en-US.json
+     * 
+     * In v5, you can update labels placeholder texts using translations:
+     * https://github.com/Adyen/adyen-web/blob/v5.12.0/packages/lib/src/language/locales/en-US.json
+     * In v6, there are properties on the paymentMethodsConfiguration object:
+     * https://docs.adyen.com/online-payments/build-your-integration/sessions-flow/?platform=Web&integration=Drop-in&version=6.4.0#localization
+     * https://github.com/Adyen/adyen-web/blob/main/packages/server/translations/en-US.json
+     * 
      * @type {Object}
      */
-    // deliveryAddress, stateOrProvince, moreMethods button not working
     const translations = {
+      // The properties below change the default values 
       "en-GB": {
-        "select.stateOrProvince": "Choose State or Province", // Changed from default
-        "payButton": "Ecom is Great", // Change from default
-        "storeDetails": "Save my card for later", // Changed from default
-        "creditCard.holderName": "What's your name?", // Changed from default
+        "select.stateOrProvince": "Choose State or Province", 
+        "payButton": "Ecom is Great", 
+        "storeDetails": "Save my card for later", 
+        "creditCard.holderName": "What's your name?", 
         "billingAddress": "What's your billing address?",
-        "creditCard.holderName": "Name on your credit card", // Changed from default
-        // "creditCard.cardNumber.label": "test", // This doesn't work
+        "creditCard.holderName": "Name on your credit card", 
+        "creditCard.holderName.placeholder": "Gayle Martin", 
+        "creditCard.numberField.title": "Your card number", 
+        "creditCard.numberField.placeholder": "666", 
+        "creditCard.expiryDateField.title": "Expiration Date", 
+        "creditCard.expiryDateField.placeholder": "Month/Year", 
+        "billingAddress": "Your billing address",
+        "street": "Street",
+        "stateOrProvince": "State",
+        "country": "Your country",
+        "houseNumberOrName": "Unit number",
       }
     };
 
@@ -148,7 +161,7 @@ getClientKey().then((clientKey) => {
       holderNameRequired: true,
       positionHolderNameOnTop: true, 
       billingAddressRequired: true,
-      billingAddressAllowedCountries: ['US', 'CA'],
+      billingAddressAllowedCountries: ['US', 'CA', 'GB'],
       // configuration: {
       //   socialSecurityNumberMode: 'show', // Shows SSN field
       // },

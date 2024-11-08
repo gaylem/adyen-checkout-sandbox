@@ -20,8 +20,8 @@ Here is a code [walk-through](https://www.youtube.com/watch?v=t1fjcD8UceE&t=1s) 
     - [x] Make the text weight 900.
     - [x] Customize the text in the payment button to say “Ecom is Great” rather than “Pay”.
 - [x] Change "BILLING ADDRESS" title styles and text.
-- [ ] Change "Name on card," "Card number," and "Expiry date" to something else.
-- [ ] Change the placeholders for other fields.
+- [x] Change "Name on card," "Card number," and "Expiry date" to something else.
+- [x] Change the placeholders for other fields.
 
 ### Gift Card Component
 - [x] Set up a gift card configuration object:

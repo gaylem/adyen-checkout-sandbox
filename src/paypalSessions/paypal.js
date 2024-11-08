@@ -1,7 +1,9 @@
 sessionsDropin().then((session) => {
   initSession();
   async function initSession() {
-    const checkout = await AdyenCheckout({
+
+    const paypalConfiguration = {
+      isExpress: true,
       clientKey: "test_M35ZRWIW6JHMPOLIAJELF2OYEYIKZQEP",
       environment: "test",
       session,
@@ -25,9 +27,17 @@ sessionsDropin().then((session) => {
         console.error(error.name, error.message, error.stack, component);
         updateResponseContainer(response.message);
       },
-    });
+      style: { // Optional configuration for PayPal payment buttons.
+        layout: "vertical",
+        color: "blue"
+    },
+      ariaLabel: "Test Label"
+    }
+
+    const checkout = await AdyenCheckout(paypalConfiguration);
+
     const paypalComponent = checkout
-      .create("paypal")
+      .create("paypal", paypalConfiguration)
       .mount("#paypal-container");
   }
 });

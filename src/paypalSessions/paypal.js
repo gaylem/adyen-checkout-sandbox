@@ -30,7 +30,7 @@ sessionsDropin().then((session) => {
       style: { // Optional configuration for PayPal payment buttons.
         layout: "vertical",
         color: "blue"
-    },
+      },
       ariaLabel: "Test Label"
     }
 

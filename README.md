@@ -12,7 +12,7 @@ If you're looking for the libraries/plugins source code, visit the main [**Adyen
 * [**Adyen Test Cards**](https://docs.adyen.com/development-resources/test-cards/test-card-numbers/)
 * [**Adyen Developer YouTube Playlist**](https://www.youtube.com/watch?v=VPpTgsJbIhc&list=PL6agz7H5yEoaS-bF2gIwRwe_ApzqmW_QX)
 
-## 👩‍💻 Challenges
+## 👩‍💻 Dropin Challenges
 
 If you'd like to create a sandbox like mine, here's how you can get started:
 
@@ -28,4 +28,8 @@ CLIENT_KEY=YOUR_CLIENT_KEY
 4. Open the [**DROPIN_CHALLENGES.md**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/dropin/DROPIN_CHALLENGES.md) file and work through the challenges listed there. 
 5. Only reference the solutions in my repo if you get really stuck or want to check your work! 
 6. Review the Adyen docs and create your own challenges to better understand payment processing. 
-7. More challenges to come!
+7. When you're done, move on to the challenges below!
+
+### More Challenges
+
+- [**3DS_CHALLENGES**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/dropin/3DS_CHALLENGES.md)

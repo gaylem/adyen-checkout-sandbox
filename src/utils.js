@@ -1,21 +1,21 @@
 // Original setReturnUrl function
+function setReturnUrl() {
+  if (window.location.pathname === "/sessions/" || "/dropin/") {
+    return window.location.href;
+  } else {
+    return "https://your-company.com/";
+  }
+}
+
+// Update return address to redirect 3DS to adyen
 // function setReturnUrl() {
 //   if (window.location.pathname === "/sessions/" || "/dropin/") {
-//     return window.location.href;
+//     // return window.location.href;
+//     return "https://www.adyen.com/";
 //   } else {
 //     return "https://your-company.com/";
 //   }
 // }
-
-// Update to redirect 3DS to adyen
-function setReturnUrl() {
-  if (window.location.pathname === "/sessions/" || "/dropin/") {
-    // return window.location.href;
-    return "https://www.adyen.com/";
-  } else {
-    return "https://www.adyen.com/";
-  }
-}
 
 // Add shopperReference for stored cards 
 // https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#stored-card-payments  

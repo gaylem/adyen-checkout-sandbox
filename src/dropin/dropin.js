@@ -153,8 +153,8 @@ getClientKey().then(clientKey => {
       hasHolderName: true,
       holderNameRequired: true,
       positionHolderNameOnTop: true,
-      billingAddressRequired: true,
-      billingAddressAllowedCountries: ['US', 'CA', 'GB'],
+      // billingAddressRequired: true,
+      // billingAddressAllowedCountries: ['US', 'CA', 'GB'],
       // configuration: {
       //   socialSecurityNumberMode: 'show', // Shows SSN field
       // },
@@ -307,6 +307,7 @@ getClientKey().then(clientKey => {
        */
       onAdditionalDetails: (state, dropin) => {
         console.log('onAdditionalDetails state: ', state);
+
         submitDetails(state.data)
           .then(response => {
             console.log('onAdditionalDetails response: ', response);
@@ -441,6 +442,19 @@ async function handleRedirectResult(redirectResult) {
     .mount('#dropin-container');
 
   console.log('redirectResult: ', redirectResult);
+
+  // I was able to recreate a 422 error in 3DS by removing redirecResult from the details object in the submitDetails call:
+
+  /* 
+
+  {
+    "status": 422,
+    "errorCode": "14_002",
+    "message": "Required field 'paymentData' is not provided.",
+    "errorType": "validation",
+    "pspReference": "JK4GXVR9P58TBT65"
+  }
+  */
 
   submitDetails({ details: { redirectResult } }).then(response => {
     console.log('submitDetails response: ', response);

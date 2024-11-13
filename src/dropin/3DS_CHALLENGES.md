@@ -8,5 +8,5 @@ Here are some videos to help you get started:
 - [Handle the redirectResult and onAdditionalDetails data](https://www.youtube.com/watch?v=E0xwRIaa2Po)
 
 ### Challenges
-- [ ] Now that you've got you're able to handle the ThreeDS flow, let's try and do some more practice, can you change the flow so that the shopper now redirects our website here at Adyen?
-- [ ] One error that we frequently on the /payments/details call is a 422 error. You can find out more about errors here. What do you think causes this error? Are you able to recreate it in your own integration?
+- [x] Can you change the flow so that the shopper now redirects our website here at Adyen?
+- [x] One error that we frequently on the /payments/details call is a 422 error. What do you think causes this error? Are you able to recreate it in your own integration?

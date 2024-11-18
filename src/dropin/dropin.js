@@ -432,7 +432,7 @@ async function handleRedirectResult(redirectResult) {
   const checkout = await AdyenCheckout({
     // changed new to await
     environment: 'test',
-    clientKey: 'test_M35ZRWIW6JHMPOLIAJELF2OYEYIKZQEP',
+    clientKey: clientKey,
     locale: 'en-GB',
   });
   const dropin = checkout

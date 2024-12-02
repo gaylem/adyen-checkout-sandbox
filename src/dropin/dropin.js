@@ -141,7 +141,7 @@ getClientKey().then(clientKey => {
      * @property {number} addressSearchDebounceMs - For address lookup feature, number of milliseconds for debounce of onAddressLookup callback. Default: 300ms.
      */
     const cardConfiguration = {
-      brands: ['maestro', 'discover', 'amex', 'mc', 'visa'],
+      brands: ['maestro', 'discover', 'amex', 'mc', 'visa', 'atome'],
       // brands: ['visa'],
       brandsConfiguration: {
         visa: {
@@ -174,6 +174,7 @@ getClientKey().then(clientKey => {
           icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
         },
       },
+        name: "BOOP"
     };
 
     /**
@@ -226,7 +227,7 @@ getClientKey().then(clientKey => {
       environment: 'test',
       clientKey: clientKey, // Mandatory. clientKey from Customer Area
       paymentMethodsResponse,
-      removePaymentMethods: ['paysafecard', 'c_cash'],
+      removePaymentMethods: [],
       translations: translations,
       locale: 'en-GB',
       // Update placeholder texts v6: https://docs.adyen.com/online-payments/upgrade-your-integration/migrate-to-web-v6/#update-placeholder-texts
@@ -235,6 +236,7 @@ getClientKey().then(clientKey => {
       paymentMethodsConfiguration: {
         card: cardConfiguration,
         giftcard: giftcardConfiguration,
+        // giftcard: giftcardConfiguration2,
         // Adding storedCard here makes the stored payment method show up on the frontend
         // https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#stored-card-payments
         storedCard: {
@@ -428,6 +430,8 @@ getClientKey().then(clientKey => {
  * @param {string} redirectResult - The redirect result received after payment.
  */
 async function handleRedirectResult(redirectResult) {
+
+  console.log(RedirectComponent.getReturnUrl(context))
   // added async
   const checkout = await AdyenCheckout({
     // changed new to await

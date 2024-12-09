@@ -18,21 +18,21 @@ getClientKey().then(clientKey => {
 
     // You can change the component titles using a loop
     // You can also change them with the "name" property on the component configuration objects (ex: cardConfiguration, giftcardConfiguration, etc.)
-    const modifyComponentTitles = () => {
-      const paymentMethodsArray = paymentMethodsResponse.paymentMethods;
+    // const modifyComponentTitles = () => {
+    //   const paymentMethodsArray = paymentMethodsResponse.paymentMethods;
 
-      for (const prop of paymentMethodsArray) {
-        if (prop.name == 'Generic GiftCard') {
-          prop.name = "Gayle's Gift Card";
-        }
-        if (prop.name == 'Credit Card') {
-          prop.name = 'CREDIT CARD';
-        }
-      }
-      console.log('paymentMethodsArray', paymentMethodsArray);
-    };
+    //   for (const prop of paymentMethodsArray) {
+    //     if (prop.name == 'Generic GiftCard') {
+    //       prop.name = "Gayle's Gift Card";
+    //     }
+    //     if (prop.name == 'Credit Card') {
+    //       prop.name = 'CREDIT CARD';
+    //     }
+    //   }
+    //   console.log('paymentMethodsArray', paymentMethodsArray);
+    // };
 
-    modifyComponentTitles();
+    // modifyComponentTitles();
 
     /**
      * Translations for various UI elements.
@@ -47,24 +47,24 @@ getClientKey().then(clientKey => {
      */
     const translations = {
       // The properties below change the default values
-      'en-GB': {
-        'select.stateOrProvince': 'Choose State or Province',
-        payButton: 'Ecom is Great',
-        storeDetails: 'Save my card for later',
-        'creditCard.holderName': "What's your name?",
-        billingAddress: "What's your billing address?",
-        'creditCard.holderName': 'Name on your credit card',
-        'creditCard.holderName.placeholder': 'Gayle Martin',
-        'creditCard.numberField.title': 'Your card number',
-        'creditCard.numberField.placeholder': '666',
-        'creditCard.expiryDateField.title': 'Expiration Date',
-        'creditCard.expiryDateField.placeholder': 'Month/Year',
-        billingAddress: 'Your billing address',
-        street: 'Street',
-        stateOrProvince: 'State',
-        country: 'Your country',
-        houseNumberOrName: 'Unit number',
-      },
+      // 'en-GB': {
+      //   'select.stateOrProvince': 'Choose State or Province',
+      //   payButton: 'Ecom is Great',
+      //   storeDetails: 'Save my card for later',
+      //   'creditCard.holderName': "What's your name?",
+      //   billingAddress: "What's your billing address?",
+      //   'creditCard.holderName': 'Name on your credit card',
+      //   'creditCard.holderName.placeholder': 'Gayle Martin',
+      //   'creditCard.numberField.title': 'Your card number',
+      //   'creditCard.numberField.placeholder': '666',
+      //   'creditCard.expiryDateField.title': 'Expiration Date',
+      //   'creditCard.expiryDateField.placeholder': 'Month/Year',
+      //   billingAddress: 'Your billing address',
+      //   street: 'Street',
+      //   stateOrProvince: 'State',
+      //   country: 'Your country',
+      //   houseNumberOrName: 'Unit number',
+      // },
     };
 
     // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style
@@ -85,23 +85,23 @@ getClientKey().then(clientKey => {
 
     // Define style object for cardConfiguration
     // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style
-    const stylesObject = {
-      base: {
-        color: 'black',
-        fontSize: '16px',
-        fontSmoothing: 'antialiased',
-        fontFamily: 'Helvetica',
-      },
-      error: {
-        color: 'magenta',
-      },
-      placeholder: {
-        color: '#d8d8d8',
-      },
-      validated: {
-        color: 'green',
-      },
-    };
+    // const stylesObject = {
+    //   base: {
+    //     color: 'black',
+    //     fontSize: '16px',
+    //     fontSmoothing: 'antialiased',
+    //     fontFamily: 'Helvetica',
+    //   },
+    //   error: {
+    //     color: 'magenta',
+    //   },
+    //   placeholder: {
+    //     color: '#d8d8d8',
+    //   },
+    //   validated: {
+    //     color: 'green',
+    //   },
+    // };
 
     /**
      * Configuration for card payments: https://docs.adyen.com/payment-methods/cards/web-component/?tab=advanced-requirements_2#optional-configuration
@@ -141,27 +141,44 @@ getClientKey().then(clientKey => {
      * @property {number} addressSearchDebounceMs - For address lookup feature, number of milliseconds for debounce of onAddressLookup callback. Default: 300ms.
      */
     const cardConfiguration = {
-      brands: ['maestro', 'discover', 'amex', 'mc', 'visa', 'atome'],
-      // brands: ['visa'],
-      brandsConfiguration: {
-        visa: {
-          icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
-        },
+      disclaimerMessage: {
+        message: "Ved betaling med internationale betalingskort reserveres købsbeløbet på din konto indtil betalingen sker.",
+        linkText: "",
+        link: "https://www.yourcompany.com/terms-and-conditions"
       },
-      showBrandsUnderCardNumber: true, // v5.12.0 or higher
-      enableStoreDetails: true, // required for storing card details
-      hasHolderName: true,
-      holderNameRequired: true,
-      positionHolderNameOnTop: true,
-      // billingAddressRequired: true,
-      // billingAddressAllowedCountries: ['US', 'CA', 'GB'],
-      // configuration: {
-      //   socialSecurityNumberMode: 'show', // Shows SSN field
+
+      // installmentOptions: {
+      //   card: {
+      //       // Shows 1, 2, and 3 as the numbers of monthly installments that the shopper can choose.
+      //       values: [1, 2, 3],
+      //       // Shows regular and revolving as plans that the shopper can choose.
+      //       plans: [ 'regular', 'revolving' ]
+      //   },
+      // // Shows payment amount per installment.
+      // showInstallmentAmounts: true
+      // }
+      // brands: ['maestro', 'discover', 'amex', 'mc', 'visa', 'atome'],
+      // // brands: ['visa'],
+      // brandsConfiguration: {
+      //   visa: {
+      //     icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
+      //   },
       // },
-      styles: stylesObject,
-      ariaLabels: ariaLabelsObject,
-      name: 'CREDIT CARD COMPONENT', // Updates the name/title of the component
+      // // showBrandsUnderCardNumber: true, // v5.12.0 or higher
+      // enableStoreDetails: true, // required for storing card details
+      // hasHolderName: true,
+      // holderNameRequired: true,
+      // positionHolderNameOnTop: true,
+      // billingAddressRequired: true,
+      // // billingAddressAllowedCountries: ['US', 'CA', 'GB'],
+      // // configuration: {
+      // //   socialSecurityNumberMode: 'show', // Shows SSN field
+      // // },
+      // styles: stylesObject,
+      // ariaLabels: ariaLabelsObject,
+      // // name: 'CREDIT CARD COMPONENT', // Updates the name/title of the component
     };
+
 
     /**
      * Configuration for gift card payments.
@@ -169,12 +186,12 @@ getClientKey().then(clientKey => {
      * @type {Object}
      */
     const giftcardConfiguration = {
-      brandsConfiguration: {
-        genericgiftcard: {
-          icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
-        },
-      },
-        name: "BOOP"
+      // brandsConfiguration: {
+      //   genericgiftcard: {
+      //     icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
+      //   },
+      // },
+      //   name: "BOOP",
     };
 
     /**
@@ -221,9 +238,9 @@ getClientKey().then(clientKey => {
      * };
      */
     const configuration = {
-      openFirstPaymentMethod: false,
-      openFirstStoredPaymentMethod: true,
-      showStoredPaymentMethods: true,
+      // openFirstPaymentMethod: false,
+      // openFirstStoredPaymentMethod: false,
+      showStoredPaymentMethods: false,
       environment: 'test',
       clientKey: clientKey, // Mandatory. clientKey from Customer Area
       paymentMethodsResponse,
@@ -251,6 +268,7 @@ getClientKey().then(clientKey => {
        */
       onChange: (state, component) => {
         updateStateContainer(state); // Demo purposes only
+        console.log(state.data)
       },
 
       /**
@@ -269,6 +287,7 @@ getClientKey().then(clientKey => {
        * It makes a POST /payments request.
        */
       onSubmit: (state, dropin) => {
+        console.log("onSubmit", state.data)
         // makePayment is a utility function
         makePayment(state.data)
           .then(response => {

@@ -11,6 +11,7 @@ getClientKey().then((clientKey) => {
       const configuration = {
         environment: "test", // Change to 'live' for the live environment.
         clientKey: clientKey, // Public key used for client-side authentication: https://docs.adyen.com/development-resources/client-side-authentication
+
         session: {
           id: response.id, // Unique identifier for the payment session.
           sessionData: response.sessionData, // The payment session data.
@@ -33,9 +34,24 @@ getClientKey().then((clientKey) => {
         // For example, this is 3D Secure configuration for cards:
         paymentMethodsConfiguration: {
           card: {
+              installmentOptions: {
+                card: {
+                    // Shows 1, 2, and 3 as the numbers of monthly installments that the shopper can choose.
+                    values: [1, 2, 3],
+                    // Shows regular and revolving as plans that the shopper can choose.
+                    plans: [ 'regular', 'revolving' ]
+                },
+              // Shows payment amount per installment.
+              showInstallmentAmounts: true
+            },
             // Optional configuration
             hasHolderName: true,
             holderNameRequired: true,
+            disclaimerMessage: {
+              message: "By donating you agree to the linkText",
+              linkText: "terms and conditions",
+              link: "https://www.yourcompany.com/terms-and-conditions"
+            }
           },
         },
       };

@@ -43,9 +43,9 @@ a:hover {
 
 
 /* Modifications */
-.adyen-checkout__label__text {
+/* .adyen-checkout__label__text {
   color: pink
-}
+} */
 
 .adyen-checkout__button--pay {
   font-weight: 900;

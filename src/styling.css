@@ -47,9 +47,16 @@ a:hover {
   color: pink
 } */
 
+/* Override the height property */
+.adyen-checkout__paywithgoogle > div > button,
+.adyen-checkout__paywithgoogle > div > button.long,
+.adyen-checkout__paywithgoogle > div > button.short {
+  height: 0px !important; /* or set it to any other value you need */
+}
+
 .adyen-checkout__button--pay {
   font-weight: 900;
-  background: #0abf53
+  background: #0abf53;
 }
 
 .adyen-checkout__fieldset__title {

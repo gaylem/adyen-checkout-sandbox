@@ -156,7 +156,7 @@ getClientKey().then(clientKey => {
       //   },
       // // Shows payment amount per installment.
       // showInstallmentAmounts: true
-      // }
+      // },
       // brands: ['maestro', 'discover', 'amex', 'mc', 'visa', 'atome'],
       // // brands: ['visa'],
       // brandsConfiguration: {

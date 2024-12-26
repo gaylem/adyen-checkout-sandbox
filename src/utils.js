@@ -22,11 +22,11 @@ function setReturnUrl() {
 const paymentMethodsConfig = {
   shopperReference: "Test_11", // required for storing card details
   reference: Math.random(),
-  countryCode: "BE",
+  countryCode: "BR",
   shopperLocale: "en-GB",
   amount: {
     value: 7834,
-    currency: "USD",
+    currency: "BRL",
   },
 };
 

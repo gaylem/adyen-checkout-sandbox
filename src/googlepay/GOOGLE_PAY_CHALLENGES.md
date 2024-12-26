@@ -1,5 +1,4 @@
 ## Google Pay Challenges 
-Video: https://hub.is.adyen.com/support/technical-support/ecom-integrations-support/wallet-integrations 
 
 ### Set Up Google Pay Payment Method in Customer Area:
 1. Go to your Customer Area => Payment Methods => Select Google Pay (googlepay) => Continue

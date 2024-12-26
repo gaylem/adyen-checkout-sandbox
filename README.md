@@ -34,4 +34,4 @@ CLIENT_KEY=YOUR_CLIENT_KEY
 
 - [**3DS_CHALLENGES.md**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/dropin/3DS_CHALLENGES.md)
 - [**PAYPAL_CHALLENGES.md**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/paypalSessions/PAYPAL_CHALLENGES.md)
-- [**GOOGLE_PAY_CHALLENGESmd**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/googlepay/GOOGLE_PAY_CHALLENGES.md)
+- [**GOOGLE_PAY_CHALLENGES.md**](https://github.com/gaylem/adyen-checkout-sandbox/blob/main/src/googlepay/GOOGLE_PAY_CHALLENGES.md)

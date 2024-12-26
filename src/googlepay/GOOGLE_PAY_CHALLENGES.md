@@ -16,8 +16,8 @@
 
 ### Minimum requirements:
 * No specific requirements in terms of versions
-* Depending on what components/dropin and API version you are using, you will need to adjust their code
-* If you are using components and API earlier than 3.13.0 and v64, you will need to add the following configuration object in their code:
+* Depending on what components/dropin and API version you are using, you will need to adjust your code
+* If you are using components and API earlier than 3.13.0 and v64, you will need to add the following configuration object in your code:
 
 ![config object](/src/googlepay/config.png)
 

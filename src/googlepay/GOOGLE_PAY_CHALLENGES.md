@@ -24,7 +24,7 @@
 ### What about versions later than 3.13.0 and v64? 
 * This is where it gets tricky
 * If you are using later versions and add ANY FIELD to the configuration object, then you need to include EVERYTHING
-* What happens if you don’t? 
+* What happens if you don’t? You get an error that says "This merchant is not enabled for Google Pay."
 
 ![a horrible error](/src/googlepay/horrible_error.png)
 

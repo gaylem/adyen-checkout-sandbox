@@ -53,13 +53,24 @@ const paymentsDefaultConfig = {
       taxCategory: "High",
     },
   ],
-  // additionalData: {
-  //   allow3DS2: true // Enables 3DS Native Flow
-  // }
+
+  //** ENABLE 3DS2 */ 
+  // Drop-in version must be 4.10.2 or later.
+  // Troubleshooting: https://docs.adyen.com/online-payments/3d-secure/native-3ds2/?platform=iOS&integration=Drop-in&version=5.0.0+and+later#troubleshooting
+  // If channel: "web" is missing, it will throw a 422 error (this parameter is above)
+
+  // authenticationData.threeDSRequestData.nativeThreeDS is set to preferred if you use Checkout API v69 or later
+  // authenticationData: {
+  //   threeDSRequestData: {
+  //     nativeThreeDS: "preferred"
+  //   }
+  // },
+
+  // additionalData.allow3DS2 is set to true if you use Checkout API v68 or earlier.
+  additionalData: {
+    allow3DS2: true // Enables 3DS Native Flow for earlier versions
+  }
 };
-
-// Change titles of the components
-
 
 // Generic POST Helper
 const httpPost = (endpoint, data) =>

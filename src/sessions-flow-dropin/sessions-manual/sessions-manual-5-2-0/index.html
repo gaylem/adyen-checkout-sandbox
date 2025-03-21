@@ -10,28 +10,27 @@
     <title>Adyen Checkout Components sample code</title>
     <link
       rel="stylesheet"
-      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.3.1/adyen.css"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.css"
     />
-    <link rel="stylesheet" href="../styling.css" />
+    <link rel="stylesheet" href="../../../styling.css" />
   </head>
-
   <body>
     <div class="container container--full-width">
       <div class="main">
         <div class="checkout-container">
           <a href="../">Back</a>
 
-          <h1>Apple Pay (/sessions & /payments flow)</h1>
+          <h1>Manual Sessions Dropin 5.2.0</h1>
           <h2>
-            This is the advanced use case flow where you must define onSubmit &
-            onAdditionalDetails!
+            This is an "Advanced use case" where onSubmit & /payments are
+            manually triggered
           </h2>
           <h3>
             Please "Inspect" element, go to "Sources" in the browser console and
-            check the applepay.js file for implementation references!
+            check the "dropin.js" file for implementation references!
           </h3>
           <div class="payment-method">
-            <div id="applepay-container">
+            <div id="dropin-container">
               <!-- Drop-in will be rendered here -->
             </div>
             <div id="result-container"></div>
@@ -68,18 +67,22 @@
           ></button>
         </div>
         <pre class="source-code"><code>const checkout = await AdyenCheckout({
-            environment: 'test',
-            clientKey: 'test_...',
-            paymentMethodsResponse: { ... },
-            onSubmit: (state, dropin) => {
-                    makePayment(state.data);
-                }
-            });
-                        
+    environment: 'test',
+    clientKey: 'test_...',
+    session: {
+        id: "CS62BB0....",
+        sessionData: "Ab02b4c0!BQABA....""
+    },
+    onPaymentCompleted: (result, component) => {
+        console.info(result, component);
+    },
+    onError: (error, component) => {
+        console.error(error.name, error.message, error.stack, component);
+    }
+});
+                            
 const dropin = checkout
-    .create('dropin',{
-        onSelect: (dropin) => {}
-    })
+    .create('dropin')
     .mount('#dropin-container');</code></pre>
 
         <div class="header">
@@ -111,9 +114,9 @@ const dropin = checkout
       </div>
     </div>
 
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.3.1/adyen.js"></script>
-    <script src="../demo.js"></script>
-    <script src="../utils.js"></script>
-    <script src="/applepaySessionsPayments/applepay.js"></script>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.js"></script>
+    <script src="../../../demo.js"></script>
+    <script src="../../../utils.js"></script>
+    <script src="sessions-manual-5-2-0.js"></script>
   </body>
 </html>

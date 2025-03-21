@@ -10,9 +10,9 @@
     <title>Adyen Checkout Components sample code</title>
     <link
       rel="stylesheet"
-      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.css"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.9.0/adyen.css"
     />
-    <link rel="stylesheet" href="../styling.css" />
+    <link rel="stylesheet" href="../../../../styling.css" />
   </head>
 
   <body>
@@ -21,11 +21,8 @@
         <div class="checkout-container">
           <a href="../">Back</a>
 
-          <h1>Apple Pay (/sessions flow)</h1>
-          <h2>
-            This is the normal flow where you let the component handle
-            everything (no extra development work needed)!
-          </h2>
+          <h1>Apple Pay (max v4.9.0)</h1>
+          <h2>This is the old flow where you must use Adyen's 3 endpoints</h2>
           <h2>
             Please "Inspect" element, go to "Sources" in the browser console and
             check the applepay.js file for references!
@@ -111,9 +108,9 @@ const dropin = checkout
       </div>
     </div>
 
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.js"></script>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/4.9.0/adyen.js"></script>
     <script src="../demo.js"></script>
     <script src="../utils.js"></script>
-    <script src="/applepaySessions/applepay.js"></script>
+    <script src="/applepayPayments/applepay-4-9-0.js"></script>
   </body>
 </html>

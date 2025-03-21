@@ -1,16 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Adyen Checkout Components sample code</title>
     <link
       rel="stylesheet"
-      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.css" />
-    <link rel="stylesheet" href="../styling.css" />
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.css"
+    />
+    <link rel="stylesheet" href="../../../styling.css" />
   </head>
 
   <body>
@@ -19,25 +21,17 @@
         <div class="checkout-container">
           <a href="../">Back</a>
 
-          <h1>
-            PayPal (/sessions) - v5.2.0 (Inspect -> Elements -> check the
-            "script" loadings)
-          </h1>
+          <h1>Apple Pay (/sessions flow)</h1>
           <h2>
             This is the normal flow where you let the component handle
             everything (no extra development work needed)!
           </h2>
           <h2>
             Please "Inspect" element, go to "Sources" in the browser console and
-            check the paypal.js file for references!
-          </h2>
-          <h2>
-            In order to see how the backend /sessions call looks like, check the
-            utils.js (especially the sessionsDropin function which is exported
-            to paypal.js file)!
+            check the applepay.js file for references!
           </h2>
           <div class="payment-method">
-            <div id="paypal-container">
+            <div id="applepay-container">
               <!-- Drop-in will be rendered here -->
             </div>
             <div id="result-container"></div>
@@ -70,7 +64,8 @@
           <h2>Basic Implementation</h2>
           <button
             class="copy-sample-code"
-            aria-label="Copy sample code"></button>
+            aria-label="Copy sample code"
+          ></button>
         </div>
         <pre class="source-code"><code>const checkout = await AdyenCheckout({
             environment: 'test',
@@ -119,6 +114,6 @@ const dropin = checkout
     <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.js"></script>
     <script src="../demo.js"></script>
     <script src="../utils.js"></script>
-    <script src="/paypalSessions/paypal.js"></script>
+    <script src="/applepaySessions/applepay-sessions.js"></script>
   </body>
 </html>

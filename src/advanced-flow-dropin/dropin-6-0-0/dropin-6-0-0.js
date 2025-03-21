@@ -2,7 +2,7 @@ getClientKey().then(clientKey => {
     getPaymentMethods().then(async paymentMethodsResponse => {
       console.log('paymentMethodsResponse', paymentMethodsResponse);
 
-      const { AdyenCheckout, Dropin, Card } = window.AdyenWeb;
+      const { AdyenCheckout, Dropin } = window.AdyenWeb;
 
       const checkout = await AdyenCheckout({
         countryCode: 'US',

@@ -86,9 +86,9 @@ getClientKey().then(clientKey => {
       // Creates and mounts the drop-in payment component.
       const dropin = new Dropin(checkout, {
           paymentMethodsConfiguration: {
-            // ach: achConfiguration,
-            // card: cardConfiguration,
-            // giftcard: giftcardConfiguration,
+            card: {
+              placeholders: { cardNumber: 'Enter your card number here' }
+            }
           },
           onSelect: activeComponent => {
             if (activeComponent.state && activeComponent.state.data)

@@ -85,6 +85,7 @@ getClientKey().then(clientKey => {
 
       // Creates and mounts the drop-in payment component.
       const dropin = new Dropin(checkout, {
+        //   showStoredPaymentMethods: false, // Prevents stored payment methods from showing up in dropin
           paymentMethodsConfiguration: {
             card: {
               placeholders: { cardNumber: 'Enter your card number here' }

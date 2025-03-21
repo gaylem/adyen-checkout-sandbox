@@ -1,3 +1,5 @@
+console.log("test")
+
 getClientKey().then(clientKey => {
   getPaymentMethods().then(async paymentMethodsResponse => {
     // console.log('paymentMethodsResponse', paymentMethodsResponse);

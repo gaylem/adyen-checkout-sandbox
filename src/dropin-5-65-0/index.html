@@ -1,26 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Adyen Checkout Components sample code</title>
     <link
       rel="stylesheet"
-      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.css"
-    />
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.65.0/adyen.css" />
     <link rel="stylesheet" href="../styling.css" />
   </head>
+
   <body>
     <div class="container container--full-width">
       <div class="main">
         <div class="checkout-container">
           <a href="../">Back</a>
 
-          <h1>Sessions Drop-in</h1>
+          <h1>Drop-in</h1>
           <h3>
             Please "Inspect" element, go to "Sources" in the browser console and
             check the "dropin.js" file for implementation references!
@@ -34,7 +33,6 @@
         </div>
 
         <div class="info">
-          <p>Check the Source Code to see the full implementation.</p>
           <p>
             To make a payment, use our
             <a
@@ -59,26 +57,21 @@
           <h2>Basic Implementation</h2>
           <button
             class="copy-sample-code"
-            aria-label="Copy sample code"
-          ></button>
+            aria-label="Copy sample code"></button>
         </div>
         <pre class="source-code"><code>const checkout = await AdyenCheckout({
-    environment: 'test',
-    clientKey: 'test_...',
-    session: {
-        id: "CS62BB0....",
-        sessionData: "Ab02b4c0!BQABA....""
-    },
-    onPaymentCompleted: (result, component) => {
-        console.info(result, component);
-    },
-    onError: (error, component) => {
-        console.error(error.name, error.message, error.stack, component);
-    }
-});
-                            
+            environment: 'test',
+            clientKey: 'test_...',
+            paymentMethodsResponse: { ... },
+            onSubmit: (state, dropin) => {
+                    makePayment(state.data);
+                }
+            });
+                        
 const dropin = checkout
-    .create('dropin')
+    .create('dropin',{
+        onSelect: (dropin) => {}
+    })
     .mount('#dropin-container');</code></pre>
 
         <div class="header">
@@ -110,9 +103,9 @@ const dropin = checkout
       </div>
     </div>
 
-    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.2.0/adyen.js"></script>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.65.0/adyen.js"></script>
     <script src="../demo.js"></script>
     <script src="../utils.js"></script>
-    <script src="/sessions/sessionsDropin.js"></script>
+    <script src="/dropin-5-65-0/dropin-5-65-0.js"></script>
   </body>
 </html>

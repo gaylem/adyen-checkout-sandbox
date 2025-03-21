@@ -47,6 +47,10 @@ a:hover {
   color: pink
 } */
 
+/* .adyen-checkout__payment-method__image__wrapper--outline:after {
+  
+} */
+
 /* Override the height property */
 .adyen-checkout__paywithgoogle > div > button,
 .adyen-checkout__paywithgoogle > div > button.long,

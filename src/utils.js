@@ -1,40 +1,40 @@
 // Original setReturnUrl function
-function setReturnUrl() {
-  if (window.location.pathname === "/sessions/" || "/dropin/") {
-    return window.location.href;
-  } else {
-    return "https://your-company.com/";
-  }
-}
-
-// Update return address to redirect 3DS to adyen
 // function setReturnUrl() {
 //   if (window.location.pathname === "/sessions/" || "/dropin/") {
-//     // return window.location.href;
-//     return "https://www.adyen.com/";
+//     return window.location.href;
 //   } else {
 //     return "https://your-company.com/";
 //   }
 // }
 
+// Update return address to redirect 3DS to adyen
+function setReturnUrl() {
+  if (window.location.pathname === "/sessions/" || "/dropin/") {
+    // return window.location.href;
+    return "https://www.adyen.com/";
+  } else {
+    return "https://your-company.com/";
+  }
+}
+
 // Add shopperReference for stored cards 
 // https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#stored-card-payments  
 const paymentMethodsConfig = {
-  shopperReference: "Test_11", // required for storing card details
+  shopperReference: "enabled test", // required for storing card details
   reference: Math.random(),
-  countryCode: "BR",
-  shopperLocale: "en-GB",
+  countryCode: "US",
+  shopperLocale: "en-US",
   amount: {
     value: 7834,
-    currency: "BRL",
+    currency: "USD",
   },
 };
 
 const paymentsDefaultConfig = {
-  shopperReference: "Test_11", // required for storing card details
-  reference: "Test_11",
+  shopperReference: "enabled test", // required for storing card details
+  reference: "enabled test",
   recurringProcessingModel: "CardOnFile",
-  countryCode: "NL",
+  countryCode: "US",
   channel: "Web",
   returnUrl: setReturnUrl(),
   amount: {
@@ -68,7 +68,9 @@ const paymentsDefaultConfig = {
 
   // additionalData.allow3DS2 is set to true if you use Checkout API v68 or earlier.
   additionalData: {
-    allow3DS2: true // Enables 3DS Native Flow for earlier versions
+    allow3DS2: true, // Enables 3DS Native Flow for earlier versions
+    executeThreeD: true,
+    threeDSRequestorChallengeInd: "04"
   }
 };
 
@@ -88,6 +90,7 @@ const getPaymentMethods = () =>
   httpPost("paymentMethods", paymentMethodsConfig)
     .then((response) => {
       if (response.error) throw "No paymentMethods available";
+      // console.log('Response', response);
       return response;
     })
     .catch(console.error);
@@ -139,7 +142,7 @@ const getClientKey = () =>
 const makeSessionsCall = () => {
   return httpPost("webSdk")
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       return response;
     })
     .catch(console.error);
@@ -169,7 +172,7 @@ const makePayments = (paymentMethod, config = {}) => {
 
   return httpPost("makePayment", paymentRequest)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       if (response.error) throw "Payment initiation failed";
       return response;
     })
@@ -189,7 +192,7 @@ const paymentsDefaultConfigForSession = {
   },
   paymentMethod: "ideal",
   shopperReference: Math.random(),
-  shopperLocale: "fr_FR",
+  shopperLocale: "en-US",
   billingAddress: {
     city: "Lupoaica",
     country: "GB",

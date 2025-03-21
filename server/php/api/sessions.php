@@ -17,7 +17,7 @@ function initiateSessions() {
 
     $apikey = getenv('CHECKOUT_APIKEY');
     $merchantAccount = getenv('MERCHANT_ACCOUNT');
-    $url = "https://checkout-test.adyen.com/v68/sessions";
+    $url = "https://checkout-test.adyen.com/v70/sessions";
 
     $data = [
         'amount' => [
@@ -26,7 +26,11 @@ function initiateSessions() {
         ],
         'reference' => 'Order Reference',
         'returnUrl' => 'https://your-company.com/...',
-        'merchantAccount' => $merchantAccount
+        'merchantAccount' => $merchantAccount,
+        'recurringProcessingModel' => 'CardOnFile',
+        'shopperInteraction' => 'Ecommerce',
+        'shopperReference' => 'enabled test',
+        'storePaymentMethodMode' => 'enabled'
     ];
 
     // Convert data to JSON

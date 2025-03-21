@@ -1,20 +1,6 @@
-/**
- * Advanced Flow + Web Drop-In
- * https://docs.adyen.com/online-payments/build-your-integration/advanced-flow/?platform=Web&integration=Drop-in
- */
-
-/**
- * Retrieves the client key using utils function and initializes payment methods configuration.
- * @returns {Promise<void>} A promise that resolves when the clientKey is obtained and paymentMethodsResponse is received.
- */
 getClientKey().then(clientKey => {
-  /**
-   * Handles the payment methods response and sets up configurations.
-   * @param {Object} paymentMethodsResponse - The response containing payment methods.
-   * @returns {Promise<void>} A promise that resolves when payment methods are obtained.
-   */
   getPaymentMethods().then(async paymentMethodsResponse => {
-    console.log('paymentMethodsResponse', paymentMethodsResponse);
+    // console.log('paymentMethodsResponse', paymentMethodsResponse);
 
     // You can change the component titles using a loop
     // You can also change them with the "name" property on the component configuration objects (ex: cardConfiguration, giftcardConfiguration, etc.)
@@ -47,41 +33,42 @@ getClientKey().then(clientKey => {
      */
     const translations = {
       // The properties below change the default values
-      // 'en-GB': {
-      //   'select.stateOrProvince': 'Choose State or Province',
-      //   payButton: 'Ecom is Great',
-      //   storeDetails: 'Save my card for later',
-      //   'creditCard.holderName': "What's your name?",
-      //   billingAddress: "What's your billing address?",
-      //   'creditCard.holderName': 'Name on your credit card',
-      //   'creditCard.holderName.placeholder': 'Gayle Martin',
-      //   'creditCard.numberField.title': 'Your card number',
-      //   'creditCard.numberField.placeholder': '666',
-      //   'creditCard.expiryDateField.title': 'Expiration Date',
-      //   'creditCard.expiryDateField.placeholder': 'Month/Year',
-      //   billingAddress: 'Your billing address',
-      //   street: 'Street',
-      //   stateOrProvince: 'State',
-      //   country: 'Your country',
-      //   houseNumberOrName: 'Unit number',
-      // },
+      'en-GB': {
+        'creditCard.numberField.placeholder': '27771800 979 1000010 8'
+        // 'select.stateOrProvince': 'Choose State or Province',
+        // payButton: 'Ecom is Great',
+        // storeDetails: 'Save my card for later',
+        // 'creditCard.holderName': "What's your name?",
+        // billingAddress: "What's your billing address?",
+        // 'creditCard.holderName': 'Name on your credit card',
+        // 'creditCard.holderName.placeholder': 'Gayle Martin',
+        // 'creditCard.numberField.title': 'Your card number',
+        // 'creditCard.numberField.placeholder': '666',
+        // 'creditCard.expiryDateField.title': 'Expiration Date',
+        // 'creditCard.expiryDateField.placeholder': 'Month/Year',
+        // billingAddress: 'Your billing address',
+        // street: 'Street',
+        // stateOrProvince: 'State',
+        // country: 'Your country',
+        // houseNumberOrName: 'Unit number',
+      },
     };
 
     // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style
-    const ariaLabelsObject = {
-      lang: 'en-GB',
-      encryptedCardNumber: {
-        label: 'I changed this',
-        iframeTitle: 'I changed this',
-      },
-      encryptedExpiryDate: {
-        label: 'I changed this, too',
-        iframeTitle: 'I changed this, too',
-      },
-      encryptedSecurityCode: {
-        label: 'Iframe for card data input field',
-      },
-    };
+    // const ariaLabelsObject = {
+    //   lang: 'en-GB',
+    //   encryptedCardNumber: {
+    //     label: 'I changed this',
+    //     iframeTitle: 'I changed this',
+    //   },
+    //   encryptedExpiryDate: {
+    //     label: 'I changed this, too',
+    //     iframeTitle: 'I changed this, too',
+    //   },
+    //   encryptedSecurityCode: {
+    //     label: 'Iframe for card data input field',
+    //   },
+    // };
 
     // Define style object for cardConfiguration
     // https://docs.adyen.com/payment-methods/cards/custom-card-integration/#default-style
@@ -141,20 +128,22 @@ getClientKey().then(clientKey => {
      * @property {number} addressSearchDebounceMs - For address lookup feature, number of milliseconds for debounce of onAddressLookup callback. Default: 300ms.
      */
     const cardConfiguration = {
-      disclaimerMessage: {
-        message: "Ved betaling med internationale betalingskort reserveres købsbeløbet på din konto indtil betalingen sker.",
-        linkText: "",
-        link: "https://www.yourcompany.com/terms-and-conditions"
+      onBrand: (event) => {
+        console.log("onBrand", event)
       },
-
+      // disclaimerMessage: {
+      //   message: "Ved betaling med internationale betalingskort reserveres købsbeløbet på din konto indtil betalingen sker.",
+      //   linkText: "",
+      //   link: "https://www.yourcompany.com/terms-and-conditions"
+      // },
       // installmentOptions: {
       //   card: {
-      //       // Shows 1, 2, and 3 as the numbers of monthly installments that the shopper can choose.
-      //       values: [1, 2, 3],
-      //       // Shows regular and revolving as plans that the shopper can choose.
-      //       plans: [ 'regular', 'revolving' ]
-      //   },
-      // // Shows payment amount per installment.
+            // Shows 1, 2, and 3 as the numbers of monthly installments that the shopper can choose.
+            // values: [1, 2, 3],
+            // Shows regular and revolving as plans that the shopper can choose.
+            // plans: [ 'regular', 'revolving' ]
+        // },
+      // Shows payment amount per installment.
       // showInstallmentAmounts: true
       // },
       // brands: ['maestro', 'discover', 'amex', 'mc', 'visa', 'atome'],
@@ -179,6 +168,12 @@ getClientKey().then(clientKey => {
       // // name: 'CREDIT CARD COMPONENT', // Updates the name/title of the component
     };
 
+    const achConfiguration = {
+      holderNameRequired: true,
+      hasHolderName: true, 
+      billingAddressAllowedCountries: ['BR'],
+    }
+
 
     /**
      * Configuration for gift card payments.
@@ -186,12 +181,24 @@ getClientKey().then(clientKey => {
      * @type {Object}
      */
     const giftcardConfiguration = {
-      // brandsConfiguration: {
-      //   genericgiftcard: {
-      //     icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
-      //   },
-      // },
-      //   name: "BOOP",
+      brandsConfiguration: {
+        fashioncheque: {
+          icon: 'https://s3-eu-west-1.amazonaws.com/tpd/logos/51c5f6a80000640005498748/0x0.png',
+          name: "The Fashion Cheque",
+        },
+      },
+    };
+
+     /**
+     * Configuration for Twint payments.
+     * @type {Object}
+     */
+     const twintConfiguration = {
+      brandsConfiguration: {
+        TWINT: {
+          icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-UrYIzs2u3MPXTvIPUHNbHhH-jdy_Z04Ig&s',
+        },
+      },
     };
 
     /**
@@ -210,50 +217,25 @@ getClientKey().then(clientKey => {
      * @param {Object} amount - Amount to be displayed on the Pay Button. Expects an object with the value and currency properties.
      * @param {number} amount.value - The amount of the transaction.
      * @param {string} amount.currency - The currency of the transaction.
-     *
-     * Example usage:
-     * const configuration = {
-     *     openFirstStoredPaymentMethod: true,
-     *     showStoredPaymentMethods: true,
-     *     environment: "test",
-     *     clientKey: clientKey, // Mandatory. clientKey from Customer Area
-     *     paymentMethodsResponse,
-     *     removePaymentMethods: ["paysafecard", "c_cash"],
-     *     translations: translations,
-     *     locale: "en-GB",
-     *     paymentMethodsConfiguration: {
-     *         card: cardConfiguration,
-     *         giftcard: giftcardConfiguration
-     *     },
-     *     secondaryAmount: {
-     *         currency: 'EUR',
-     *         value: 1000,
-     *         currencyDisplay: 'symbol'
-     *     },
-     *     showPayButton: true,
-     *     amount: {
-     *         value: 1000,
-     *         currency: 'USD'
-     *     }
-     * };
      */
     const configuration = {
       // openFirstPaymentMethod: false,
-      // openFirstStoredPaymentMethod: false,
-      showStoredPaymentMethods: false,
+      openFirstStoredPaymentMethod: true,
+      showStoredPaymentMethods: true,
       environment: 'test',
       clientKey: clientKey, // Mandatory. clientKey from Customer Area
       paymentMethodsResponse,
-      removePaymentMethods: [],
       translations: translations,
       locale: 'en-GB',
       // Update placeholder texts v6: https://docs.adyen.com/online-payments/upgrade-your-integration/migrate-to-web-v6/#update-placeholder-texts
       // Update placeholder texts using translations for v5
       // Put paypal, klarna, configs etc here:
       paymentMethodsConfiguration: {
+        ach: achConfiguration,
         card: cardConfiguration,
         giftcard: giftcardConfiguration,
         // giftcard: giftcardConfiguration2,
+        twint: twintConfiguration,
         // Adding storedCard here makes the stored payment method show up on the frontend
         // https://docs.adyen.com/payment-methods/cards/web-component/?tab=store-card-details-payment-methods_2#stored-card-payments
         storedCard: {
@@ -261,33 +243,13 @@ getClientKey().then(clientKey => {
         },
       },
 
-      /**
-       * Called when the shopper provides the required payment details.
-       * @param {Object} state - The current state of the payment.
-       * @param {Object} component - The component associated with the payment method.
-       */
       onChange: (state, component) => {
         updateStateContainer(state); // Demo purposes only
-        console.log(state.data)
+        // console.log(state.data)
       },
 
-      /**
-       * Event handler for the onSubmit event.
-       *
-       * @param {Object} state - The current state of the payment process.
-       * @param {Object} dropin - The instance of the Drop-in component.
-       * @param {Object} actions - An object containing methods to resolve or reject the payment.
-       * @param {Function} actions.resolve - Call this method to resolve the payment, passing the resultCode, action, and order objects (if available) from the API response.
-       * @param {Function} actions.reject - Call this method if the /payments request from your server fails or if an unexpected error occurs.
-       *
-       * @throws {Error} Throws an error if the payment is unsuccessful or if actions.reject() is called.
-       *
-       * This event is triggered when the shopper selects the Pay button and the payment details are valid.
-       * This applies only if the `showPayButton` configuration parameter is set to true.
-       * It makes a POST /payments request.
-       */
       onSubmit: (state, dropin) => {
-        console.log("onSubmit", state.data)
+        console.log("onSubmit", state)
         // makePayment is a utility function
         makePayment(state.data)
           .then(response => {
@@ -297,9 +259,9 @@ getClientKey().then(clientKey => {
               dropin.handleAction(response.action);
             } else if (response.resultCode === 'Authorised') {
               dropin.setStatus('success', { message: 'Payment successful!' });
-              setTimeout(function () {
-                dropin.setStatus('ready');
-              }, 2000);
+              // setTimeout(function () {
+              //   dropin.setStatus('ready');
+              // }, 2000);
             } else if (response.resultCode !== 'Authorised') {
               dropin.setStatus('error', { message: 'Oops, try again please!' });
               setTimeout(function () {
@@ -312,24 +274,9 @@ getClientKey().then(clientKey => {
           });
       },
 
-      /**
-       * Event handler for the onAdditionalDetails event.
-       *
-       * @param {Object} state - The current state of the payment process.
-       * @param {Object} dropin - The instance of the Drop-in component.
-       * @param {Object} actions - An object containing methods to resolve or reject the payment.
-       * @param {Function} actions.resolve - Call this method to resolve the payment, passing the resultCode, action, and order objects (if available) from the API response.
-       * @param {Function} actions.reject - Call this method if the /payments/details request from your server fails or if an unexpected error occurs.
-       *
-       * This event is triggered when a payment method requires additional details, such as for native 3D Secure 2 or native QR code payment methods.
-       * It makes a POST /payments/details request.
-       *
-       * @throws {Error} Throws an error if the payment is unsuccessful or if actions.reject() is called.
-       */
       onAdditionalDetails: (state, dropin) => {
-        console.log('onAdditionalDetails state: ', state);
-
-        submitDetails(state.data)
+        console.log("state", state);
+        submitDetails(state.data) 
           .then(response => {
             console.log('onAdditionalDetails response: ', response);
             if (response.action) {
@@ -350,50 +297,15 @@ getClientKey().then(clientKey => {
           });
       },
 
-      /**
-       * Event handler for when the payment is completed.
-       *
-       * @param {Object} result - The result object containing payment details.
-       * @param {Object} component - The instance of the payment component.
-       *
-       * @example
-       * function onPaymentCompleted(result, component) {
-       *     console.log('Payment completed successfully:', result);
-       *     // Handle successful payment completion
-       * }
-       */
       onPaymentCompleted: (result, component) => {
+        console.log("onPaymentCompleted")
         console.info(result, component);
       },
 
-      /**
-       * Event handler for when the payment fails.
-       * A failed payment has result codes Cancelled, Error, or Refused.
-       *
-       * @param {Object} result - The result object containing payment failure details.
-       * @param {Object} component - The instance of the payment component.
-       *
-       * @example
-       * function onPaymentFailed(result, component) {
-       *     console.error('Payment failed:', result);
-       *     // Handle payment failure (e.g., show an error message to the user)
-       * }
-       */
       onPaymentFailed: (result, component) => {
         console.info(result, component);
       },
 
-      /**
-       * Event handler for when an error occurs in Drop-in.
-       *
-       * @param {Error} error - The error object containing details about the error.
-       *
-       * @example
-       * function onError(error) {
-       *     console.error('An error occurred:', error);
-       *     // Handle the error (e.g., log it or show a notification to the user)
-       * }
-       */
       onError: (error, component) => {
         console.error(error.name, error.message, error.stack, component);
       },
@@ -424,7 +336,6 @@ getClientKey().then(clientKey => {
 
     /**
      * Creates and mounts the drop-in payment component.
-     * QUESTION: Why isn't dropin being used? Is it just being used elsewhere?
      * @returns {Object} The mounted drop-in component instance.
      */
     const dropin = checkout
@@ -450,7 +361,7 @@ getClientKey().then(clientKey => {
  */
 async function handleRedirectResult(redirectResult) {
 
-  console.log(RedirectComponent.getReturnUrl(context))
+  // console.log(RedirectComponent.getReturnUrl(context))
   // added async
   const checkout = await AdyenCheckout({
     // changed new to await
@@ -464,7 +375,7 @@ async function handleRedirectResult(redirectResult) {
     })
     .mount('#dropin-container');
 
-  console.log('redirectResult: ', redirectResult);
+  // console.log('redirectResult: ', redirectResult);
 
   // I was able to recreate a 422 error in 3DS by removing redirecResult from the details object in the submitDetails call:
 
@@ -480,7 +391,7 @@ async function handleRedirectResult(redirectResult) {
   */
 
   submitDetails({ details: { redirectResult } }).then(response => {
-    console.log('submitDetails response: ', response);
+    // console.log('submitDetails response: ', response);
     if (response.resultCode === 'Authorised') {
       document.getElementById('result-container').innerHTML =
         '<img alt="Success" src="https://checkoutshopper-test.adyen.com/checkoutshopper/images/components/success.svg">';

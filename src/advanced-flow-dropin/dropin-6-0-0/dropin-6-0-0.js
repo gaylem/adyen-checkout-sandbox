@@ -16,31 +16,56 @@ getClientKey().then(clientKey => {
           // console.log(state.data)
         },
   
-        onSubmit: (state, dropin) => {
-          console.log("onSubmit", state)
-          // makePayment is a utility function
-          makePayment(state.data)
-            .then(response => {
-              dropin.setStatus('loading');
-              if (response.action) {
-                // Response.action contains redirect url
-                dropin.handleAction(response.action);
-              } else if (response.resultCode === 'Authorised') {
-                dropin.setStatus('success', { message: 'Payment successful!' });
-                // setTimeout(function () {
-                //   dropin.setStatus('ready');
-                // }, 2000);
-              } else if (response.resultCode !== 'Authorised') {
-                dropin.setStatus('error', { message: 'Oops, try again please!' });
-                setTimeout(function () {
-                  dropin.setStatus('ready');
-                }, 2000);
-              }
-            })
-            .catch(error => {
-              throw Error(error);
-            });
+        onSubmit: async (state, dropin, actions) => {
+          console.log("onSubmit", state);
+        
+          try {
+            // Make the payment request and wait for the response
+            const response = await makePayment(state.data);
+            
+            // Destructure the necessary fields from the response
+            const { action, resultCode, order, donationToken } = response;
+            
+            if (!resultCode) {
+              // If there is no resultCode, reject the action
+              actions.reject();
+            } else if (resultCode === 'Authorised') {
+              // If the payment is authorized, resolve the action with success
+              actions.resolve({
+                resultCode,
+                action,
+                order,
+                donationToken,
+              });
+              
+              dropin.setStatus('success', { message: 'Payment successful!' });
+              
+              // Optionally reset the dropin status after a delay
+              setTimeout(() => {
+                dropin.setStatus('ready');
+              }, 2000);
+            } else {
+              // If the resultCode isn't 'Authorised', handle as error
+              dropin.setStatus('error', { message: 'Oops, try again please!' });
+        
+              // Resolve with error state
+              actions.resolve({
+                resultCode,
+                action,
+                order,
+                donationToken,
+              });
+        
+              setTimeout(() => {
+                dropin.setStatus('ready');
+              }, 2000);
+            }
+          } catch (error) {
+            // In case of error, reject the action
+            actions.reject();
+          }
         },
+        
   
         onAdditionalDetails: (state, dropin) => {
           console.log("state", state);

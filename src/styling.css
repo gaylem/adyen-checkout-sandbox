@@ -191,7 +191,7 @@ a:hover {
 .integration-list-item {
   background: #f7f8f9;
   border-radius: 6px;
-  flex: 1 1 0;
+  flex: 1 auto;
   margin: 4px;
   min-width: 40%;
   position: relative;

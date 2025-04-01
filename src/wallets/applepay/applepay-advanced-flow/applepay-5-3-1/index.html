@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Adyen Checkout Components sample code</title>
+    <link
+      rel="stylesheet"
+      href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.3.1/adyen.css"
+    />
+    <link rel="stylesheet" href="../../../../styling.css" />
+  </head>
+
+  <body>
+    <div class="container container--full-width">
+      <div class="main">
+        <div class="checkout-container">
+          <a href="../">Back</a>
+
+          <h1>
+            Apple Pay (v5.0.0+ without /sessions) - v5.3.1 (Inspect -> Elements
+            -> check the "script" loadings)
+          </h1>
+          <h2>
+            This is like the old flow where you must use Adyen's 3 endpoints
+          </h2>
+          <h2>
+            Please "Inspect" element, go to "Sources" in the browser console and
+            check the applepay.js file for references!
+          </h2>
+          <h2>
+            To see the applePay/sessions request, do the following on Safari's
+            MacBook: Inspect Element, open the Network tab and keep it open,
+            click the "Pay" button, click the newly created "sessions" call in
+            the Network tab, navigate to "Request Data", click on "Request Data"
+            and make sure the values are correct!
+          </h2>
+          <h2>
+            In order to see how the backend calls looks like, check the utils.js
+            (especially the functions which were exported to to the applepay.js
+            file - getClientKey, getPaymentMethods, makePayment, submitDetails)!
+          </h2>
+          <div class="payment-method">
+            <div id="applepay-container">
+              <!-- Drop-in will be rendered here -->
+            </div>
+            <div id="result-container"></div>
+          </div>
+        </div>
+
+        <div class="info">
+          <p>Check the Source Code to see the full implementation.</p>
+          <p>
+            To make a payment, use our
+            <a
+              href="https://docs.adyen.com/developers/development-resources/test-cards/test-card-numbers"
+              target="_blank"
+              >test card numbers</a
+            >.
+          </p>
+          <p>
+            For more information, please refer to the
+            <a
+              href="https://docs.adyen.com/checkout/drop-in-web/"
+              target="_blank"
+              >Drop-in documentation</a
+            >.
+          </p>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="header">
+          <h2>Basic Implementation</h2>
+          <button
+            class="copy-sample-code"
+            aria-label="Copy sample code"
+          ></button>
+        </div>
+        <pre class="source-code"><code>const checkout = await AdyenCheckout({
+            environment: 'test',
+            clientKey: 'test_...',
+            paymentMethodsResponse: { ... },
+            onSubmit: (state, dropin) => {
+                    makePayment(state.data);
+                }
+            });
+                        
+const dropin = checkout
+    .create('dropin',{
+        onSelect: (dropin) => {}
+    })
+    .mount('#dropin-container');</code></pre>
+
+        <div class="header">
+          <h2>Current state</h2>
+        </div>
+        <pre class="current-state">{}</pre>
+
+        <div class="request-container">
+          <div class="header">
+            <h2>Request</h2>
+          </div>
+          <p>
+            The request to the <code>/payments</code> endpoint will be shown
+            here.
+          </p>
+          <pre class="request-code"></pre>
+        </div>
+
+        <div class="response-container">
+          <div class="header">
+            <h2>Response</h2>
+          </div>
+          <p>
+            The response from the <code>/payments</code> endpoint will be shown
+            here.
+          </p>
+          <pre class="response-code"></pre>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.3.1/adyen.js"></script>
+    <script src="../demo.js"></script>
+    <script src="../utils.js"></script>
+    <script src="/applepayV5WithoutSessions/applepay.js"></script>
+  </body>
+</html>

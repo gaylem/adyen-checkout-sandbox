@@ -88,6 +88,7 @@ getClientKey().then(clientKey => {
         //   showStoredPaymentMethods: false, // Prevents stored payment methods from showing up in dropin
           paymentMethodsConfiguration: {
             card: {
+              name: "Boop",
               placeholders: { cardNumber: 'Enter your card number here' }
             }
           },

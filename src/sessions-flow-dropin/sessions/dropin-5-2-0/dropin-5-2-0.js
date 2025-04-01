@@ -41,7 +41,6 @@ getClientKey().then((clientKey) => {
                 name: "The Fashion Cheque",
               },
             },
-    
           },
           ach: {
             // Optional configuration.

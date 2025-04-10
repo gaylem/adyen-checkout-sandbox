@@ -148,7 +148,7 @@ getClientKey().then(clientKey => {
       // Shows payment amount per installment.
       // showInstallmentAmounts: true
       // },
-      // brands: ['maestro', 'discover', 'amex', 'mc', 'visa', 'atome'],
+      brands: ['discover', 'amex', 'mc', 'visa', 'bancontact'],
       // // brands: ['visa'],
       // brandsConfiguration: {
       //   visa: {
@@ -157,10 +157,10 @@ getClientKey().then(clientKey => {
       // },
       // // showBrandsUnderCardNumber: true, // v5.12.0 or higher
       // enableStoreDetails: true, // required for storing card details
-      // hasHolderName: true,
-      // holderNameRequired: true,
+      hasHolderName: true,
+      holderNameRequired: true,
       // positionHolderNameOnTop: true,
-      // billingAddressRequired: true,
+      billingAddressRequired: true,
       // // billingAddressAllowedCountries: ['US', 'CA', 'GB'],
       // // configuration: {
       // //   socialSecurityNumberMode: 'show', // Shows SSN field

@@ -28,7 +28,7 @@ getClientKey().then((clientKey) => {
         },
       });
 
-      const googlePayComponent = checkout.create("paywithgoogle");
+      const googlePayComponent = checkout.create("googlepay");
 
       googlePayComponent
         .isAvailable()
